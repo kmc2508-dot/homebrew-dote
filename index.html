@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服装提案アプリ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>📱 服装提案アプリ</h1>
+      <p>春の寒暖差でも、朝5秒で服装判断。</p>
+    </header>
+
+    <main class="container">
+      <section class="card controls">
+        <h2>天気取得</h2>
+        <div class="control-row">
+          <button id="geoBtn">現在地から取得</button>
+        </div>
+        <form id="cityForm" class="control-row">
+          <input id="cityInput" type="text" placeholder="地名を入力（例: Tokushima）" required />
+          <button type="submit">地名で取得</button>
+        </form>
+        <p id="statusText" class="status">APIキーを設定して天気を取得してください。</p>
+      </section>
+
+      <section class="card result">
+        <h2>今日の服装</h2>
+        <p id="dateText" class="date"></p>
+        <div id="mainSuggestion" class="main-suggestion">--</div>
+        <p id="tempSummary" class="temp-summary">最低 --℃ / 最高 --℃</p>
+        <p id="subComment" class="sub-comment"></p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>時間帯</th>
+              <th>気温</th>
+              <th>推奨</th>
+            </tr>
+          </thead>
+          <tbody id="detailBody">
+            <tr><td>朝</td><td>--℃</td><td>--</td></tr>
+            <tr><td>昼</td><td>--℃</td><td>--</td></tr>
+            <tr><td>夜</td><td>--℃</td><td>--</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card settings">
+        <h2>設定</h2>
+        <label>
+          体感タイプ
+          <select id="userTypeSelect">
+            <option value="cold">寒がり</option>
+            <option value="normal">普通</option>
+            <option value="hot">暑がり</option>
+          </select>
+        </label>
+
+        <label>
+          地域（任意）
+          <input id="savedLocationInput" type="text" placeholder="tokushima" />
+        </label>
+
+        <label class="checkbox-row">
+          <input id="notificationToggle" type="checkbox" />
+          通知を有効にする
+        </label>
+
+        <label>
+          OpenWeather APIキー
+          <input id="apiKeyInput" type="password" placeholder="API key" />
+        </label>
+
+        <button id="saveSettingsBtn">設定を保存</button>
+      </section>
+    </main>
+
+    <div id="inAppNotice" class="in-app-notice hidden"></div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
